@@ -30,7 +30,9 @@ public class Main extends Activity {
         mainHandler = new Handler(getMainLooper()) {
             @Override
             public void handleMessage(Message msg) {
-                tvResult.setText("Got message");
+                Bundle b = msg.getData();
+
+                tvResult.setText(b.getString("reply"));
             }
         };
 
