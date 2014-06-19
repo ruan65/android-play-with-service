@@ -32,7 +32,8 @@ public class Main extends Activity {
             public void handleMessage(Message msg) {
                 Bundle b = msg.getData();
 
-                tvResult.setText(b.getString("reply"));
+                tvResult.setText(tvResult.getText() +
+                        "\n" + b.getString("reply"));
             }
         };
 
