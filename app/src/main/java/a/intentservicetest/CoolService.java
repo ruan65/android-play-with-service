@@ -50,20 +50,20 @@ public class CoolService extends IntentService {
 
         Main.log(finMessage);  // 666 - default value (((
 
-//        Message m = Main.mainHandler.obtainMessage();
-//        m.sendToTarget();
+        Message m = Main.mainHandler.obtainMessage(777, finMessage);
+        m.sendToTarget();
 
-        Message msg = Message.obtain();
-        Bundle b = new Bundle();
-        b.putString("reply", finMessage);
-        msg.setData(b);
-
-        Messenger messenger = intent.getParcelableExtra("messenger");
-        try {
-            messenger.send(msg);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
+//        Message msg = Message.obtain();
+//        Bundle b = new Bundle();
+//        b.putString("reply", finMessage);
+//        msg.setData(b);
+//
+//        Messenger messenger = intent.getParcelableExtra("messenger");
+//        try {
+//            messenger.send(msg);
+//        } catch (RemoteException e) {
+//            e.printStackTrace();
+//        }
 
     }
 

@@ -17,8 +17,8 @@ public class Main extends Activity {
 
     private int taskCount;
     private TextView tv, tvResult;
-    private Handler mainHandler;
-    Messenger messenger;
+    static Handler mainHandler;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,14 +30,12 @@ public class Main extends Activity {
         mainHandler = new Handler(getMainLooper()) {
             @Override
             public void handleMessage(Message msg) {
-                Bundle b = msg.getData();
 
                 tvResult.setText(tvResult.getText() +
-                        "\n" + b.getString("reply"));
+                        "\n" + msg.obj);
             }
         };
 
-        messenger = new Messenger(mainHandler);
     }
 
 
@@ -46,7 +44,6 @@ public class Main extends Activity {
 
         i.putExtra("messageToService", "Hello bro! #" + taskCount++);
         i.putExtra("task", taskCount);
-        i.putExtra("messenger", messenger);
 
         startService(i);
 
